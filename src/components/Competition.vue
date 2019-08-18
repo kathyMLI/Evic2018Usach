@@ -3,7 +3,7 @@
     <div class= "contenedor-exterior">
       <div class ="contenedor-nombre">
         <div>
-          <h3>Concurso de posters</h3>
+          <h3>Contest</h3>
         </div>
         <div>
           <hr>

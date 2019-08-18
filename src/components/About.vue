@@ -36,7 +36,11 @@
                     <h4>{{ value.name }}</h4>
                 </div>
                 <div>
-                    <a target="_blank" rel="noopener noreferrer" :href="value.link">{{ value.name}} WebPage</a>
+                    <a target="_blank"
+                       rel="noopener noreferrer"
+                       :href="value.link">
+                          {{ value.name}} WebPage
+                    </a>
                 </div>
             </li>
         </ul>
@@ -126,23 +130,16 @@
 <script>
 import firebase from 'firebase';
 import { BreedingRhombusSpinner } from 'epic-spinners';
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
-import Map from './Map.vue';
 
 export default {
   components: {
     BreedingRhombusSpinner,
-    LMap,
-    LTileLayer,
-    LMarker,
-    Map,
   },
   data() {
     return {
       image: '',
       urlGary: '@/gary.jpeg',
       spinner: true,
-      land: '',
       titulo: '',
       subtitulo: '',
       oradoresPlenaria: {},
@@ -158,76 +155,36 @@ export default {
       indexForPath: 0,
       pathImageOradores: [],
       textAboutEvic: '',
-      center: [-23.752961, -57.854357],
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      marker: [-23.752961, -57.854357],
-      zoom:30,
-            locationTitle: {
-            type: String,
-            default: "Here's Where to Find Us!"
-        },
-        mapZoom: {
-            type: String,
-            default: "18"
-        },
-        addressOne: {
-            type: String,
-            default: "<h2><i class='fas fa-map-marker-alt'></i> Seattle Office</h2>1500 Westlake Ave. N<br/>Seattle, WA 98109, USA"
-        },
-        addressOneLat: {
-            type: String,
-            default: "47.6327408"
-        },
-        addressOneLon: {
-            type: String,
-            default: "-122.3424712"
-        },
     };
   },
- computed: {
-        getMapIframeSrc() {
-           // return this.getMapLocation(this.addressOneLat, this.addressOneLon);
-           return this.getMapLocation(-33.446116, -70.682535);
-        },
-        getMapLinkHref() {
-            this.land = this.getMapLink(-33.446116, -70.682535)
-            return this.getMapLink(-33.446116, -70.682535);
-        }
+  computed: {
+    getMapIframeSrc() {
+      return 'https://www.openstreetmap.org/export/embed.html?bbox=-70.68730115890504%2C-33.44758783758052%2C-70.68057954311372%2C-33.44356827963777&amp;layer=mapnik&marker=-33.446116%2C-70.682535';
     },
+    getMapLinkHref() {
+      return this.getMapLink(-33.446116, -70.682535);
+    },
+  },
   methods: {
     setData() {
       const starCountRef = firebase.database().ref('/');
       starCountRef.once('value', (snapshot) => {
         this.titulo = snapshot.val().titulo;
-        this.subtitulo = "XIV IEEE international Summer School on Computational Intelligence";
+        this.subtitulo = 'XIV IEEE international Summer School on Computational Intelligence';
         this.textAboutEvic = snapshot.val().descripcion;
-        this.center.lat = Number(snapshot.val().ubicacion.lat);
-        this.center.lng = Number(snapshot.val().ubicacion.long);
         this.direccion = snapshot.val().ubicacion.direccion;
         this.oradoresPlenaria = snapshot.val().plenaria;
         this.image = snapshot.val().fondo;
-        this.fecha = "12 - 13 - 14 / December";
+        this.fecha = '12 - 13 - 14 / December';
         this.organizadores = snapshot.val().organizadores;
         this.auspiciadores = snapshot.val().auspiciadores;
         this.expositores = snapshot.val().expositores;
         this.spinner = false;
       });
     },
-            getMapLocation(latitude, longitude) {
-            const minLat = -33.446116;
-            const maxLat = -70.682535;
-            const minLon = -33.44531;
-            const maxLon = -70.68298;
-            return "https://www.openstreetmap.org/export/embed.html?bbox=-70.68730115890504%2C-33.44758783758052%2C-70.68057954311372%2C-33.44356827963777&amp;layer=mapnik&marker=-33.446116%2C-70.682535"
-
-        },
-        getMapLink(latitude, longitude) {
-            return "https://www.openstreetmap.org/?" +
-                    "mlat=" + latitude + "&" +
-                    "mlon=" + longitude +
-                    "#map=" + 18 + "/" + latitude + "/" + longitude;
-        },
+    getMapLink(latitude, longitude) {
+      return `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=18/${latitude}/${longitude}`;
+    },
   },
   mounted() {
     this.setData();
@@ -640,7 +597,6 @@ header nav li {
 .contact {
     padding: 0 !important;
     margin: 0 !important;
-    
 }
 
 

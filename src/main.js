@@ -5,8 +5,6 @@ import Buefy from 'buefy';
 import FixedHeader from 'vue-fixed-header';
 import VueSVGIcon from 'vue-svgicon';
 import firebase from 'firebase';
-import * as VueGoogleMaps from 'vue2-google-maps';
-import L from 'leaflet';
 import 'buefy/lib/buefy.css';
 import 'font-awesome/css/font-awesome.css';
 import App from './App';
@@ -16,13 +14,6 @@ import LocationUsach from './components/Location';
 import Program from './components/Program';
 import Speakers from './components/Speakers';
 
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-});
 Vue.use(FixedHeader);
 Vue.use(Buefy);
 Vue.use(VueSVGIcon);
@@ -30,13 +21,13 @@ Vue.config.productionTip = false;
 
 // Initialize Firebase
 const config = {
-    apiKey: "AIzaSyDZ0BEPY3DYe1_89JzClsBbfpLXs-I4FYY",
-    authDomain: "evic-2018.firebaseapp.com",
-    databaseURL: "https://evic-2018.firebaseio.com",
-    projectId: "evic-2018",
-    storageBucket: "evic-2018.appspot.com",
-    messagingSenderId: "887009428713",
-    appId: "1:887009428713:web:1e064da5360023a1"
+  apiKey: 'AIzaSyDZ0BEPY3DYe1_89JzClsBbfpLXs-I4FYY',
+  authDomain: 'evic-2018.firebaseapp.com',
+  databaseURL: 'https://evic-2018.firebaseio.com',
+  projectId: 'evic-2018',
+  storageBucket: 'evic-2018.appspot.com',
+  messagingSenderId: '887009428713',
+  appId: '1:887009428713:web:1e064da5360023a1',
 };
 firebase.initializeApp(config);
 
@@ -65,7 +56,6 @@ Vue.use(VueScrollTo, {
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-
 
 
 const routes = [
