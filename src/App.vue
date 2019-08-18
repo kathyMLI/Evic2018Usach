@@ -9,7 +9,7 @@
     <a><router-link :to="{ name: 'About'}">ABOUT EVIC</router-link></a>
     <a><router-link :to="{ name: 'Program'}">PROGRAM</router-link></a>
     <a><router-link :to="{ name: 'Speakers'}">EXPERTS</router-link></a>
-    <a><router-link :to="{ name: 'Competition'}">COONTEST</router-link></a>
+    <a><router-link :to="{ name: 'Competition'}">CONTEST</router-link></a>
     <a><router-link :to="{ name: 'Location'}">LOCATION</router-link></a>
   </nav>
 </header>

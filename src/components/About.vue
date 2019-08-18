@@ -36,13 +36,13 @@
                     <h4>{{ value.name }}</h4>
                 </div>
                 <div>
-                  <a :href="value.link"> {{ value.name}} WebPage</a>
+                    <a target="_blank" rel="noopener noreferrer" :href="value.link">{{ value.name}} WebPage</a>
                 </div>
             </li>
         </ul>
 </section>
     <section class="packages">
-        <h3 class="title">Expositores</h3>
+        <h3 class="title">Exhibitor</h3>
         <hr>
         <ul class="grid">
             <li
@@ -90,7 +90,7 @@
     </ul>
   </section>
         <section class="packages">
-        <h3 class="title">Organizadores</h3>
+        <h3 class="title">Exhibitor</h3>
         <hr>
         <ul class="grid">
             <li
@@ -104,7 +104,7 @@
     </section>
         <section class="testimonials2">
             <div>
-                <h3 class="title">{{ titulo }} anteriores</h3>
+                <h3 class="title">{{ titulo }} previous</h3>
                 <div class ="link-container">
                     <a href="http://evic.cl/2017/">2017</a>
                     <a href="http://evic.cl/2016/">2016</a>
@@ -142,6 +142,7 @@ export default {
       image: '',
       urlGary: '@/gary.jpeg',
       spinner: true,
+      land: '',
       titulo: '',
       subtitulo: '',
       oradoresPlenaria: {},
@@ -168,7 +169,7 @@ export default {
         },
         mapZoom: {
             type: String,
-            default: "10"
+            default: "18"
         },
         addressOne: {
             type: String,
@@ -187,11 +188,11 @@ export default {
  computed: {
         getMapIframeSrc() {
            // return this.getMapLocation(this.addressOneLat, this.addressOneLon);
-           return this.getMapLocation(47.6327408, -122.3424712);
+           return this.getMapLocation(-33.446116, -70.682535);
         },
         getMapLinkHref() {
-            //return this.getMapLink(this.addressOneLat, this.addressOneLon);
-            return this.getMapLink(47.6327408, -122.3424712);
+            this.land = this.getMapLink(-33.446116, -70.682535)
+            return this.getMapLink(-33.446116, -70.682535);
         }
     },
   methods: {
@@ -214,20 +215,18 @@ export default {
       });
     },
             getMapLocation(latitude, longitude) {
-            const minLat = Number.parseFloat(latitude) - 0.1;
-            const maxLat = Number.parseFloat(latitude) + 0.1;
-            const minLon = Number.parseFloat(longitude) - 0.25;
-            const maxLon = Number.parseFloat(longitude) + 0.25;
-            return "https://www.openstreetmap.org/export/embed.html?" +
-                    "bbox=" + minLon + "%2C" + minLat + "%2C" + maxLon + "%2C" + maxLat +
-                    "&layer=mapnik" +
-                    "&marker=" + latitude + "%2C" + longitude;
+            const minLat = -33.446116;
+            const maxLat = -70.682535;
+            const minLon = -33.44531;
+            const maxLon = -70.68298;
+            return "https://www.openstreetmap.org/export/embed.html?bbox=-70.68730115890504%2C-33.44758783758052%2C-70.68057954311372%2C-33.44356827963777&amp;layer=mapnik&marker=-33.446116%2C-70.682535"
+
         },
         getMapLink(latitude, longitude) {
             return "https://www.openstreetmap.org/?" +
                     "mlat=" + latitude + "&" +
                     "mlon=" + longitude +
-                    "#map=" + this.mapZoom + "/" + latitude + "/" + longitude;
+                    "#map=" + 18 + "/" + latitude + "/" + longitude;
         },
   },
   mounted() {

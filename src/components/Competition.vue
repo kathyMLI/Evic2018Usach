@@ -36,7 +36,7 @@
                 v-for="(info, index) in value.informacion"
                 v-bind:key="index">
                 <h4>
-                  {{info.nombre}}:
+                  {{info.nombre}}
                 </h4>
                 <h3>
                   {{info.data}}

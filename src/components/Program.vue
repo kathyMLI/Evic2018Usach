@@ -4,7 +4,7 @@
     <div class= "contenedor-exterior">
       <div class ="contenedor-nombre">
         <div>
-          <h3>Programa</h3>
+          <h3>Program</h3>
         </div>
         <div>
           <hr>

@@ -13,7 +13,7 @@
     <div v-else class= "contenedor-exterior">
       <div class ="contenedor-nombre">
         <div>
-          <h3>Oradores</h3>
+          <h3>Speakers</h3>
         </div>
         <div>
           <hr>
