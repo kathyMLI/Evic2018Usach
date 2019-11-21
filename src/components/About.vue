@@ -45,18 +45,6 @@
             </li>
         </ul>
 </section>
-    <section class="packages">
-        <h3 class="title">Exhibitor</h3>
-        <hr>
-        <ul class="grid">
-            <li
-            v-for="(value, index) in expositores"
-            v-bind:key="index">
-                <h4>{{ value.name }}</h4>
-                <p>{{ value.corta }}</p>
-            </li>
-        </ul>
-    </section>
     <section class="testimonials2">
         <h3 class="title">{{ titulo }}</h3>
         <p>{{ subtitulo }}</p>
@@ -82,7 +70,7 @@
 
     </section>
   <section>
-       <h3 class="title">Auspiciadores</h3>
+       <h3 class="title">Sponsors</h3>
         <hr>
     <ul class="flex-container wrap">
     <li
