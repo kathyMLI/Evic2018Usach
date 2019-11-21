@@ -69,18 +69,6 @@
             </div>
 
     </section>
-  <section>
-       <h3 class="title">Sponsors</h3>
-        <hr>
-    <ul class="flex-container wrap">
-    <li
-    class="flex-item"
-    v-for="(value, index) in auspiciadores"
-    v-bind:key="index">
-         <img :src="value.link">
-    </li>
-    </ul>
-  </section>
         <section class="packages">
         <h3 class="title">Exhibitor</h3>
         <hr>
